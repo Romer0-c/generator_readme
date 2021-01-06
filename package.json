@@ -1,0 +1,23 @@
+{
+  "name": "generator_readme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Romer0-c/generator_readme.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Romer0-c/generator_readme/issues"
+  },
+  "homepage": "https://github.com/Romer0-c/generator_readme#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  }
+}
