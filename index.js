@@ -7,7 +7,7 @@ const writeFileAsync = util.promisify(fs.writeFile);
 
 
 const promptUser = () =>
-inquirer.prompt([
+  inquirer.prompt([
     {
       type: 'input',
       message: 'What is your project name?',
@@ -29,44 +29,32 @@ inquirer.prompt([
       name: 'contributors',
     },
     {
-      name: "name",
+      name: "license",
       type: 'rawlist',
       message: 'Please select an applicable license:',
       choices: [
-          "one", 
-          "two", 
-          "three",
+        "MIT",
+        "Apache License 2.0",
+        "two",
+        "three",
       ]
     },
   ]);
 
-  const generateMD = (answers) =>
-`<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <title>Document</title>
-</head>
-<body>
-  <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Hi! My name is ${answers.projectname}</h1>
-    <p class="lead">I am from ${answers.location}.</p>
-    <h3>Example heading <span class="badge badge-secondary">Contact Me</span></h3>
-    <ul class="list-group">
-      <li class="list-group-item">My GitHub username is ${answers.contributors}</li>
-      <li class="list-group-item">LinkedIn: ${answers.usage}</li>
-    </ul>
-  </div>
-</div>
-</body>
-</html>`;
+const generateMD = (answers) =>
+  `# Project Name
+${answers.projectname}
+
+#License Type 
+
+
+![License Badge](https://img.shields.io/badge/license-${encodeURIComponent(answers.license)}-yellow)
+
+    `;
 
 promptUser()
-  .then((answers) => writeFileAsync('index.html', generateMD(answers)))
-  .then(() => console.log('Successfully wrote to index.html'))
+  .then((answers) => writeFileAsync(`./output/README.md`, generateMD(answers)))
+  .then(() => console.log('Successfully wrote to README.md'))
   .catch((err) => console.error(err));
 
   // .then((response) => {
@@ -77,7 +65,7 @@ promptUser()
 
   // .then((data) => {
   //      const filename = `${data.projectname.toLowerCase().split(' ').join('')}.json`;
-    
+
   //       fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
   //         err ? console.log(err) : console.log('Success!')
   //       );
