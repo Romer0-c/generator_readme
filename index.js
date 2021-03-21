@@ -35,20 +35,28 @@ const promptUser = () =>
       choices: [
         "MIT",
         "Apache License 2.0",
-        "two",
-        "three",
+        "GNU GPLv3",
+        "ISC License",
       ]
     },
   ]);
 
 const generateMD = (answers) =>
-  `# Project Name
-${answers.projectname}
+  `# ${answers.projectname}       ![License Badge](https://img.shields.io/badge/license-${encodeURIComponent(answers.license)}-yellow)
 
-#License Type 
+### Usage Information
+
+${answers.usage}
+
+### Installation Instructions
+
+${answers.installation}
+
+### Contributors
+
+${answers.contributors}
 
 
-![License Badge](https://img.shields.io/badge/license-${encodeURIComponent(answers.license)}-yellow)
 
     `;
 
